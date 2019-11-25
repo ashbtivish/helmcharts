@@ -1,0 +1,108 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auto-jenkins-jenkins-ui
+  labels: &JenkinsLabels
+    app.kubernetes.io/name: auto-jenkins
+    app.kubernetes.io/component: jenkins-master
+spec:
+  type: NodePort
+  selector: *JenkinsLabels
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: ui
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auto-jenkins-jenkins-agents-connector
+  labels: &JenkinsLabels
+    app.kubernetes.io/name: auto-jenkins
+    app.kubernetes.io/component: jenkins-master
+spec:
+  selector: *JenkinsLabels
+  ports:
+    - protocol: TCP
+      port: 50000
+      targetPort: 50000
+      name: agents-connector
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auto-jenkins-tls
+  labels:
+    app.kubernetes.io/name: auto-jenkins
+    app.kubernetes.io/component: jenkins-master
+data:
+  tls.key: |
+    LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZB
+    QVNDQktnd2dnU2tBZ0VBQW9JQkFRRFV5NTVaZ2JDd3NMa2UKeSt3QStDbDdRdlphdlRmbVN1VWxj
+    Um9qSEV1b2lpTlZqQ3FXU0dySFM4aHMxMUlvVjAwRFdoemY2clFFU1FvMwptV3cxQ0l5RnJjL09L
+    eE1DNzNvOWR5WUpCeE56WGJqdGo2bVNNS3NvcFZYSExwZWVRZlhObk5hYTlnRVU4aUZlCmtWdDJ2
+    dzhXRmZBckcwM0NrOXcvNzB3c0hDSXlyNDdUcTAvWEMzUmtyQTd2WEFkYjNtVFpPK3FWYnptSDNY
+    OFIKZ2ZvOUI0UGROek1OZE4wVm9IVElxMGpleTZ2K05idmFqZy9ERWUzR3VVYzJxdkw4UzJ4dFYv
+    cXJVUzFLZC9SRwptZFZnWDlsYjhhT0VZV1ZveTYzVjhJUHNxNyswUE44TFR5dHdVYzFMZVZuVndV
+    NS9sY2I4ZjhEUkNITHZiM0ppCkI2dHh3NFV4QWdNQkFBRUNnZ0VBWGlzRmxrS0lPSWpjUXo2bTMv
+    N3lESFFqcFNBYlByUmlGMkduMldYS0xYbUUKRFhXTDJ4bU05MGtZRnVKcW55T1RGeXFub0lleXhq
+    cTBaTXBtVWtuSU5kZ25IK3Q3N0U2aDM5VjhaWDVXSXpXVQpncnlTby9rWnBWRVZWcUhOd3VFWnI3
+    WDZXblVISVlmTk1KWk96WXZiVjBDNkdibHBmZlFGQWQ0WjdXTTkxd04rCjdGR3lEMDZRaDdvMGI5
+    bFkrU0ZObnJxMjBJWllRVUczbzlTcC9ieFlvZ3RGQTRibC9IWkNnaUNmUVg4OVZrWmcKZzdJREdh
+    MWEycVU1b3pvN2M0cDhpNDhCVGMrNFlrMStaeVprcTkyYnZJYURnSnU0REREbTNreVY0RW85YXgx
+    bgpkMTI3aWFabEJWUjgwVnhvVTVqUEQ4My9uRlFVUXROdEZYazgyYVpIWVFLQmdRRDEzRDlHTGs5
+    Y2FaN2FLVjVoClJvSmFGMVZKWGVXcU5WYkhTMDNoYmFNZWxwaGZrT3hKcUtFaEZPazQ3NklCbjBW
+    MlQxQTVpWk44T0JnczF3NVcKditYS0pFc2RQenBGYnBKclVUanZtTUJKRTl5WnpGTVVDZVN0Umhy
+    c0N0R3hSSklJRWlhODNxMUNyM3NKaTNJWgppcGFJZEV4NG5EdnhPTVZwaEhNNGFzRVgzUUtCZ1FE
+    ZGtrYnMvM2FPWWhkYkVIbUpkbEFIM0tUSTF0R1pTR0FlClQvam5uMmZleEZYSVNXMFRTQWNmRndp
+    dStrZkdtcE4rUDI1S05yeGkrWmdMUm4zSHp0SElBdTdHWk80NnNPMlAKc2xianJUcG84b2RtYVBT
+    WEdzajJwYnJtSW0zT0R0UUE3ZytJSjZxcFZHU3dCMnpuVUp4dDVHWEhEQW5pWU92MApqamoyczAx
+    WFpRS0JnUURtZU1lTHgzKzNsbjlGN1QrL0duUzVkV1FLdVkzQWgrM0lOdXhUNVEzamI3SjQ2NGJF
+    CjZlSFovQnRBdDBwOEVNenh3aG5uUmZOT245cnh0Y3VJUUsxdFY2WmVUVllYbmpaOWlZOUE4MFZW
+    ZTl2eEJKdmcKamdHaStMUG1ENkpRZFlJYk5NREJqbENHMGE4WjNIRmlSZ3NrOFRoNlc2TEpWcm1n
+    VjN3WEorUEl0UUtCZ0JuWAo0ZVhxdGcxTmE2UDNlL1dJa3pVWGl6RFJ2WWkvWkZha3hVZGUxR0ty
+    UzhZY3FsaEJZbk5CNElWb004NzZZSkd0CkhGUVRwazExQjBMcGFlcFFPUyszQjlxa0V4Vk5aYWdK
+    Q1JGdE53N2VtdVJiQVl4T1YzcE5Ra3R0WUpsVUtXNGkKVmpWdlN2eU5GMkZndkZjT2svQk5YNEdq
+    NmRNNXNzdkhldVZyYkczeEFvR0JBSkFMeGJCSVg2MVJpOVVKclorNwo4bjJGSlVjQk9FcTFScFc1
+    VEhnMlRidW9sbXVGSW9zcTRIWGFrU2ZNR0hIN3UyK1BoVVdjRmpZMGN1akdESDJsCnMrRCtOSU13
+    Z1c0aWRRUzZZaTAyWnJKOGRnM09hZzVNOVVzSW80TXNSbWNlNHlzOEVyTDVRWjJwSCt2MFBwMCsK
+    WHZZZVA1OEZ1OEEvQUxWVjRHdkNCNzh6Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
+  tls.crt: |
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURLVENDQWhHZ0F3SUJBZ0lVR2QvYjYwcjdy
+    Zm5VbnpJRnlTNFYwQnlkSytVd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0pERVFNQTRHQTFVRUF3d0hh
+    bVZ1YTJsdWN6RVFNQTRHQTFVRUNnd0hhbVZ1YTJsdWN6QWVGdzB4T1RFeApNakF3TmpVeE1qVmFG
+    dzB5TURFeE1Ua3dOalV4TWpWYU1DUXhFREFPQmdOVkJBTU1CMnBsYm10cGJuTXhFREFPCkJnTlZC
+    QW9NQjJwbGJtdHBibk13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFR
+    RFUKeTU1WmdiQ3dzTGtleSt3QStDbDdRdlphdlRmbVN1VWxjUm9qSEV1b2lpTlZqQ3FXU0dySFM4
+    aHMxMUlvVjAwRApXaHpmNnJRRVNRbzNtV3cxQ0l5RnJjL09LeE1DNzNvOWR5WUpCeE56WGJqdGo2
+    bVNNS3NvcFZYSExwZWVRZlhOCm5OYWE5Z0VVOGlGZWtWdDJ2dzhXRmZBckcwM0NrOXcvNzB3c0hD
+    SXlyNDdUcTAvWEMzUmtyQTd2WEFkYjNtVFoKTytxVmJ6bUgzWDhSZ2ZvOUI0UGROek1OZE4wVm9I
+    VElxMGpleTZ2K05idmFqZy9ERWUzR3VVYzJxdkw4UzJ4dApWL3FyVVMxS2QvUkdtZFZnWDlsYjhh
+    T0VZV1ZveTYzVjhJUHNxNyswUE44TFR5dHdVYzFMZVZuVndVNS9sY2I4CmY4RFJDSEx2YjNKaUI2
+    dHh3NFV4QWdNQkFBR2pVekJSTUIwR0ExVWREZ1FXQkJSNDZqSzBjdnhHZCs5QXU3SDQKNnEyWHRM
+    c1ZDekFmQmdOVkhTTUVHREFXZ0JSNDZqSzBjdnhHZCs5QXU3SDQ2cTJYdExzVkN6QVBCZ05WSFJN
+    QgpBZjhFQlRBREFRSC9NQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUFDSk44cTJnVk1OeWNhcFli
+    OXZhREZselE1Cjg5RFgveWFmWVBWN3NFamZoNGhYdTBZM3ZPOXRTNElsZFJCY21VUmNRRXRNQUR1
+    SUJEbndYRStjbW9yaXFrMEsKbmR6Z2hDTDBUcUluQllKT3BvenoreUE3cUZ6N3hsS2xTbjJsdnlh
+    NjM2MmIwSWRXbFRSTUFoRS80eXNBdlNuQQp4aVBIbnN6SnpyRDY3WGtxc0l4ckNEbVNGYW4zOGds
+    Z0RYV20vclkrQTBwRUVITGRCUmhmSTlEZzgxZDJvYi9ICmVQSjAyMkVBNkFlRy9zZVJlL1A5c3Fn
+    U055UzdkUjd6ckplQXhGbGgyTUMzZ0x2QVpodExKeXQ4T01PTTMycDAKQXRsRlI0TCtPN1Y2NmFV
+    a3VMYzJTYTBzYjNUemI1T2xXOTJuNTF6b2V3WFlsaTNxSmNpL0dXcTEyT0JhCi0tLS0tRU5EIENF
+    UlRJRklDQVRFLS0tLS0K
+type: kubernetes.io/tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: auto-jenkins-jenkins-ui
+  labels:
+    app.kubernetes.io/name: auto-jenkins
+    app.kubernetes.io/component: jenkins-master
+spec:
+  tls:
+  - secretName: auto-jenkins-tls
+  backend:
+    serviceName: auto-jenkins-jenkins-ui
+    servicePort: 8080
