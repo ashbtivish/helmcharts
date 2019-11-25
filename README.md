@@ -1,10 +1,11 @@
 # helmcharts
 Helm Charts to deploy services on GCP Cluster. 
 
-
+## Initilizing Tiller on Cluster
 kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 
+### References
 https://daemonza.github.io/2017/02/20/using-helm-to-deploy-to-kubernetes/
 
 https://github.com/GoogleCloudPlatform/click-to-deploy/blob/master/k8s/jenkins/README.md
