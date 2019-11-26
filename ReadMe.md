@@ -43,25 +43,25 @@ Now execute the script to start the deployment
 
 ## Screenshot Post-deployment
 
-#### Execution of the Deployment script
+### Execution of the Deployment script
 
 ![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/DeploymentScript.jpg "Execution Screenshot")
 
-#### Workloads created on GCP Cluster
+### Workloads created on GCP Cluster
 
-![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/workloads.jpg "GCP Workload")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/workloads.JPG "GCP Workload")
 
 #### Services and Endpoints created on GCP Cluster
 
-![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/services.jpg "GCP Service")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/services.JPG "GCP Service")
 
 #### Launch Jenkins after creation of Service and endpoint
 
-![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/jenkins.jpg "Jenkins Service")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/jenkins.JPG "Jenkins Service")
 
 #### Launch SonarQube after creation of Service and endpoint
 
-![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/sonarqube.jpg "SonarQube Service")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/sonarqube.JPG "SonarQube Service")
 
 ## References
 
