@@ -41,3 +41,29 @@ Now execute the script to start the deployment
 * MongoDB
 * SonarQube
 
+## Screenshot Post-deployment
+
+#### Execution of the Deployment script
+
+![MissingImage](resources/deploymentScript.jpg?raw=true "Execution Screenshot")
+
+#### Workloads created on GCP Cluster
+
+![MissingImage](resources/workloads.jpg?raw=true "GCP Workload")
+
+#### Services and Endpoints created on GCP Cluster
+
+![MissingImage](resources/services.jpg?raw=true "GCP Service")
+
+#### Launch Jenkins after creation of Service and endpoint
+
+![MissingImage](resources/jenkins.jpg?raw=true "Jenkins Service")
+
+#### Launch SonarQube after creation of Service and endpoint
+
+![MissingImage](resources/sonarqube.jpg?raw=true "SonarQube Service")
+
+## References
+
+* https://docs.kublr.com/installation/gcp/gcp/
+* https://hub.docker.com
