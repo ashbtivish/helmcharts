@@ -53,15 +53,15 @@ Now execute the script to start the deployment
 
 #### Services and Endpoints created on GCP Cluster
 
-![MissingImage](resources/services.jpg?raw=true "GCP Service")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/services.jpg "GCP Service")
 
 #### Launch Jenkins after creation of Service and endpoint
 
-![MissingImage](resources/jenkins.jpg?raw=true "Jenkins Service")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/jenkins.jpg "Jenkins Service")
 
 #### Launch SonarQube after creation of Service and endpoint
 
-![MissingImage](resources/sonarqube.jpg?raw=true "SonarQube Service")
+![MissingImage](https://raw.github.com/ashbtivish/helmcharts/master/resources/sonarqube.jpg "SonarQube Service")
 
 ## References
 
