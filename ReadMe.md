@@ -1,6 +1,6 @@
 # HelmCharts
 
-The project constitute of Helmchart to deploy JIRA, JENKINS, OwaspSonarQube & MongoDB on Google K8s Cluster
+The project constitutes of Helmchart to deploy JIRA, JENKINS, OwaspSonarQube & MongoDB on Google K8s Cluster
 
 ## Pre-requisites
 
