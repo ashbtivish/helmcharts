@@ -1,0 +1,17 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "{{ .Values.sonarqube.name }}-endpoint"
+  namespace: "{{ .Values.namespace }}"
+  labels:
+    app: {{ .Values.sonarqube.name }}
+spec:
+  ports:
+  - protocol: "TCP"
+    port: {{ .Values.sonarqube.maptoport }}
+    targetPort: {{ .Values.sonarqube.port }}
+  selector:
+    app: {{ .Values.sonarqube.name }}
+  type: "{{ .Values.sonarqube.iptype }}"
+  loadBalancerIP: ""

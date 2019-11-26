@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
+  labels:
+    app: "{{ .Values.jira.name }}"
+  name: "{{ .Values.jira.name }}"
+  namespace: default
+
+spec:
+  progressDeadlineSeconds: 600
+  replicas: {{ .Values.jira.replicaCount }}
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: "{{ .Values.jira.name }}"
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: "{{ .Values.jira.name }}"
+    spec:
+      containers:
+      - image: "{{ .Values.jira.image }}"
+        imagePullPolicy: "{{ .Values.jira.pullPolicy }}"
+        name: jira-core
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
