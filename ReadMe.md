@@ -45,7 +45,7 @@ Now execute the script to start the deployment
 
 #### Execution of the Deployment script
 
-![MissingImage](resources/deploymentScript.jpg?raw=true "Execution Screenshot")
+![MissingImage](https://github.com/ashbtivish/helmcharts/tree/master/resources/deploymentScript.jpg?raw=true "Execution Screenshot")
 
 #### Workloads created on GCP Cluster
 
