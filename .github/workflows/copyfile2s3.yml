@@ -27,3 +27,6 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    
+    - name: Install AWS CLI
+      run: "sudo apt update -y ; sudo apt install -y awscli"
