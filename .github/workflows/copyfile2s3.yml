@@ -32,6 +32,6 @@ jobs:
         aws s3 ls
         echo "Listing Files"
         ls $GITHUB_WORKSPACE -latr
-        aws s3 sync $GITHUB_WORKSPACE S3://ashishbucketpoc/
+        aws s3 sync . s3://ashishbucketpoc/
 
     
