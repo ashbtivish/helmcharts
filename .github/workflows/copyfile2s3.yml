@@ -19,6 +19,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        ref: 'master'
     
     - name: Install AWS CLI
       run: "sudo apt update -y ; sudo apt install -y awscli"
@@ -28,4 +30,8 @@ jobs:
         aws configure set aws_access_key_id ${{ secrets.ACCESSID }}
         aws configure set aws_secret_access_key ${{ secrets.SECRETKEY }}
         aws s3 ls
+        echo "Listing Files"
+        ls $GITHUB_WORKSPACE -latr
         aws s3 sync $GITHUB_WORKSPACE S3://ashishbucketpoc/
+
+    
