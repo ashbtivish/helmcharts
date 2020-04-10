@@ -32,4 +32,5 @@ jobs:
         aws s3 ls
         echo "Listing Files"
         ls $GITHUB_WORKSPACE -latr
-        aws s3 sync oneclickdeploy s3://ashishbucketpoc/
+        aws s3 sync oneclickdeploy s3://ashishbucketpoc/oneclickdeploy/
+
